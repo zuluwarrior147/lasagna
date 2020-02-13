@@ -38,7 +38,7 @@ jobs:
           paths:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle.kts" }}
-      - run: gradle test
+      - run: gradle check
 
 workflows:
   version: 2
