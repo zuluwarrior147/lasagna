@@ -6,7 +6,7 @@ import scala.io.Source.fromFile
 
 object FileParser {
   def parseFile(file: File): Map[Label, List[Feature]] = {
-    val linesItr = fromFile(file).getLines()
+    val linesItr = fromFile(file)("UTF-8").getLines()
 
     def isLabel = (line: String) => line.trim.matches("## intent:\\s?.+")
 
