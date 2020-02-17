@@ -24,9 +24,20 @@ object Main {
     writeAll(trainFeatures, trainWriter)
     writeAll(testFeatures, testWriter)
 
+    printlnStats(testFeatures.size,trainFeatures.size,labels.size)
     labelsWriter.close()
     trainWriter.close()
     testWriter.close()
+  }
+
+  def printlnStats(testSize: Int, trainingSize: Int, labelsSize: Int): Unit = {
+    println(
+      s"""
+         Lasagna successfully generated the data.
+         It produced Test Data size : ${testSize}
+         Total Training data        : ${trainingSize}
+         Total Labels               : ${labelsSize}
+        """)
   }
 
 }
