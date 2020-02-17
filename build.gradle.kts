@@ -17,3 +17,7 @@ dependencies {
     testImplementation("org.scalatest:scalatest_$scalaCompatVersion:3.0.8")
     testRuntimeOnly("org.pegdown:pegdown:1.4.2")
 }
+
+application {
+    mainClassName = "org.gradle.sample.Main"
+}
