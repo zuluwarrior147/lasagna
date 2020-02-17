@@ -49,26 +49,14 @@ class ParseSpec extends UnitSpec {
 
 
     "return set of pairs with labels" in {
-      val lines =
-        """## intent:label1
-          | - Feature1
-          | - Feature2
-          |
-          |## intent:label2
-          | - Feature3
-          | - Feature4
-          |""".stripMargin
-
-      val file  = new File("tempFile")
-      new PrintWriter(file) {
-        write(lines); close
-      }
+      val file = InputFileFixture.createInputFile()
 
       val result = FileParser.parseFile(file)
       result.get(Label("label1")).isDefined shouldBe true
       result.get(Label("label2")).isDefined shouldBe true
       result(Label("label1")) should contain only(Feature("Feature1"), Feature("Feature2"))
       result(Label("label2")) should contain only(Feature("Feature3"), Feature("Feature4"))
+      file.delete()
       //result._2 should
     }
   }

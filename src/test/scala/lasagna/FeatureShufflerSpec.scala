@@ -6,31 +6,6 @@ class FeatureShufflerSpec extends WordSpec with Matchers {
 
   "Feature Shuffel " should {
     "return empty result " in {
-
-      /*
-      label1 -> [f1,f2]
-      label2 -> [f3,f4]
-
-      label.txt
-      1, label1
-      2, label2
-      ----------------------
-
-     training.txt
-      1,f1
-      2,f3
-      1,f2
-      ------------
-      test.tx t
-      2,f4
-
-
-
-      List of 4
-      labels mapping list  => map
-
-
-      */
       val map = Map(
         Label("label1") -> List(Feature("f1"),Feature("f2")),
         Label("label2") -> List(Feature("f3"),Feature("f4")))

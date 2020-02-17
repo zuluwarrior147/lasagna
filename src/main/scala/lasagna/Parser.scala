@@ -4,7 +4,7 @@ object Parser {
   def parseLines(lines: List[String]): (Label,List[Feature]) = {
 
     def isValidFeatureLine(line:String):Boolean ={
-      line.matches(" - (\\w+)")
+      line.matches("\\s?-\\s?.+")
     }
 
     val label = parseLabel(lines.head)

@@ -8,14 +8,7 @@ object FileParser {
   def parseFile(file: File): Map[Label, List[Feature]] = {
     val linesItr = fromFile(file).getLines()
 
-    def isLabel = (line: String) => line.trim.matches("## intent:\\s?\\w+")
-
-
-
-    /*
-
-    two accumulators --> one for intermediate list  -> One to store the result of Parsed map
-     */
+    def isLabel = (line: String) => line.trim.matches("## intent:\\s?.+")
 
     final case class Aggregator(private val chunk: List[String] = List.empty, private val resultAcc: Map[Label, List[Feature]] = Map.empty) {
       def addLine(line: String): Aggregator = {

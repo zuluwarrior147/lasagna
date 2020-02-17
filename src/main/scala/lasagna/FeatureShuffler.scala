@@ -5,19 +5,10 @@ import scala.util.Random
 object FeatureShuffler {
 
   type Features = List[(Int,Feature)]
-
-  def splitFeatures(features: Features): (Features, Features) = {
-    /*
-    I while put a loop
-    I will take variable till some counter exhausts or on of the portion is done
-
-     */
-
+  def splitFeatures(features: Features, testPercentage:Double = 0.2,trainingPercentage:Double = 0.8): (Features, Features) = {
     val shuffeled = Random.shuffle(features)
-
-//    (0 until features.length).foldLeft()
-    val testSize =  (features.size * 0.2).toInt
-    val trainIntermediate = (features.size * 0.8).toInt
+    val testSize =  Math.ceil(features.size * testPercentage)
+    val trainIntermediate = Math.floor(features.size * trainingPercentage).toInt
     val trainSize = if(trainIntermediate +testSize != features.size) trainIntermediate-1 else trainIntermediate
     ((shuffeled.takeRight(trainSize), shuffeled.take(testSize.toInt)))
   }
@@ -29,9 +20,6 @@ object FeatureShuffler {
         pair._2.map((labelsCorrespondence(pair._1), _))
       })
     }
-
     (labelsCorrespondence, explode())
   }
-
-
 }
