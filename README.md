@@ -3,3 +3,14 @@
 > My favorite food is lasagne -- Andrii
 
 A scala job to parse markdown rasa nlu files into csv files.
+
+## Running tests
+```bash
+./gradlew check
+```
+
+## Creating jar
+```bash
+./gradlew assemble
+```
+Will create a `lasagna-all.jar` in the folder `./build/libs`
