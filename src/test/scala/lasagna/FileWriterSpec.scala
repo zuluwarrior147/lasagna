@@ -8,7 +8,7 @@ class FileWriterSpec extends UnitSpec {
   "write files" should {
     "write file with inout data to specified location" in {
       val input = Seq("1,label1", "0,label0")
-      val writer = FileWriter("./tempFile")
+      val writer = FileWriter("./src/test/resources/tempFile")
       input.foreach(x => {
         writer.write(x)
       })
@@ -35,8 +35,11 @@ class FileWriterSpec extends UnitSpec {
 
   "writeAll" should {
     "write all data from the sequence" in {
-      val features =
-        Seq((1, Feature("f1")), (2, Feature("f2")), (3, Feature("f3")), )
+      val features = Seq(
+        (1, Feature("f1")),
+        (2, Feature("f2")),
+        (3, Feature("f3"))
+      )
       val outputList = mutable.ArrayBuffer[String]()
       val customWriter: Writer = new Writer {
         override def write(line: String): Writer = {

@@ -1,18 +1,7 @@
-# Ignore Gradle project-specific cache directory
 .gradle
 .idea/
-# Ignore Gradle build output directory
 build
 *.class
 *.log
-
-# sbt specific
-.cache/
-.history/
-.lib/
-dist/*
-target/
-lib_managed/
-src_managed/
-project/boot/
-project/plugins/project/
+src/test/resources/tempFile
+src/test/resources/testOutPut
