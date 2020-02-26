@@ -4,4 +4,4 @@ build
 *.class
 *.log
 src/test/resources/tempFile
-src/test/resources/testOutPut
+src/test/resources/testOutPut/*
