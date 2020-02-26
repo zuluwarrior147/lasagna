@@ -29,8 +29,39 @@ jobs:
       - store_artifacts:
           path: build/test-results/test
           when: always
+  build:
+    docker:
+      - image: circleci/openjdk:11-jdk
+    working_directory: ~/repo
+    environment:
+      JVM_OPTS: -Xmx3200m
+      TERM: dumb
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-gradle-wrapper-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "build.gradle.kts" }}
+      - run: ./gradlew distZip
+      - save_cache:
+          paths:
+            - ~/.gradle/wrapper
+          key: v1-gradle-wrapper-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: v1-dependencies-{{ checksum "build.gradle.kts" }}
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - build/distributions
 
 workflows:
   build_test_deploy:
     jobs:
       - test
+      - build:
+          requires:
+            - test
+
