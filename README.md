@@ -9,8 +9,8 @@ A scala job to parse markdown rasa nlu files into csv files.
 ./gradlew check
 ```
 
-## Creating jar
+## Create zip and then run it 
 ```bash
-./gradlew assemble
+./gradlew distZip
 ```
-Will create a `lasagna-all.jar` in the folder `./build/libs`
+
